@@ -1,4 +1,4 @@
-# GitHub Copilot for HBuilderX
+# GitHub Copilot Plus for HBuilderX
 
 Your AI pair programmer
 
