@@ -49,7 +49,7 @@ async function showQuickPick() {
       }
       const selectorString = selectorArray.join(',')
       await config.update(
-        'GithubCopilot.enable',
+        'GithubCopilotPlus.enable',
         selectorString,
         vscode.ConfigurationTarget.Global,
       )
@@ -82,12 +82,12 @@ async function showQuickPick() {
     action: () => {
       if (hbuilderx) {
         hbuilderx.workspace.gotoConfiguration(
-          'GithubCopilot.editor.enableAutoCompletions',
+          'GithubCopilotPlus.editor.enableAutoCompletions',
         )
       } else {
         vscode.commands.executeCommand(
           'workbench.action.openSettings',
-          'GithubCopilot',
+          'GithubCopilotPlus',
         )
       }
     },

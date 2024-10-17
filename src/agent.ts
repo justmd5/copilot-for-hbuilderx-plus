@@ -30,4 +30,26 @@ connection.onRequest('statusNotification', params => {
   console.log('statusNotification: ', params)
 })
 
+class CopilotAgent {
+  constructor() {
+      this.advancedConfig = new CopilotAdvancedConfig();
+      this.setupRequestInterceptor();
+  }
+
+  setupRequestInterceptor() {
+      const originalFetch = global.fetch;
+      global.fetch = async (url, options) => {
+          const config = this.advancedConfig.getConfig();
+          // 添加认证提供者信息
+          if (config.authProvider) {
+              options.headers = options.headers || {};
+              options.headers['X-Copilot-Auth-Provider'] = config.authProvider;
+          }
+
+          return originalFetch(url, options);
+      };
+  }
+}
+
+
 export { connection }

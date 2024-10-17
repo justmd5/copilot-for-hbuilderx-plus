@@ -33,7 +33,7 @@ export function updateStatus(statusOrLoading: STATUS | boolean) {
     }
   }
   const config = vscode.workspace.getConfiguration()
-  const statusConfig = config.get('GithubCopilot.status.show')
+  const statusConfig = config.get('GithubCopilotPlus.status.show')
   // 默认 auto 用于处理部分设备 HBuilderX 首次启动不显示图标的问题
   const fixString =
     statusConfig === 'icon+text' ||
@@ -166,7 +166,7 @@ export async function activate({ subscriptions }: vscode.ExtensionContext) {
   statusBarItem.show()
   subscriptions.push(
     vscode.workspace.onDidChangeConfiguration(function (event) {
-      if (event.affectsConfiguration('GithubCopilot.status.show')) {
+      if (event.affectsConfiguration('GithubCopilotPlus.status.show')) {
         updateStatus(status)
       }
     }),

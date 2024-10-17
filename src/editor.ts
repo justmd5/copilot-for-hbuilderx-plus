@@ -224,7 +224,7 @@ function registerInlineCompletionItemProvider(
       'verilog',
       'wxml',
     ])
-  const enableSelector = config.get<string>('GithubCopilot.enable') || ''
+  const enableSelector = config.get<string>('GithubCopilotPlus.enable') || ''
   selector.length = 0
   selectorCache.clear()
   enableSelector.split(',').forEach(item => {
@@ -279,7 +279,7 @@ function registerInlineCompletionItemProvider(
           const items: vscode.InlineCompletionItem[] = []
           const config = vscode.workspace.getConfiguration()
           const enableAutoCompletions = config.get(
-            'GithubCopilot.editor.enableAutoCompletions',
+            'GithubCopilotPlus.editor.enableAutoCompletions',
           )
           if (
             !(
@@ -461,14 +461,14 @@ export async function activate({ subscriptions }: vscode.ExtensionContext) {
   registerInlineCompletionItemProvider(subscriptions)
   subscriptions.push(
     vscode.workspace.onDidChangeConfiguration(function (event) {
-      if (event.affectsConfiguration('GithubCopilot.enable')) {
+      if (event.affectsConfiguration('GithubCopilotPlus.enable')) {
         registerInlineCompletionItemProvider(subscriptions)
       }
       if (
-        event.affectsConfiguration('GithubCopilot.proxy.enable') ||
-        event.affectsConfiguration('GithubCopilot.proxy.host') ||
-        event.affectsConfiguration('GithubCopilot.proxy.user') ||
-        event.affectsConfiguration('GithubCopilot.proxy.strictSSL')
+        event.affectsConfiguration('GithubCopilotPlus.proxy.enable') ||
+        event.affectsConfiguration('GithubCopilotPlus.proxy.host') ||
+        event.affectsConfiguration('GithubCopilotPlus.proxy.user') ||
+        event.affectsConfiguration('GithubCopilotPlus.proxy.strictSSL')
       ) {
         isEditorInfoChanged = true
       }

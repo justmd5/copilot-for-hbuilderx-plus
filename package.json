@@ -1,20 +1,20 @@
 {
-  "id": "copilot-for-hbuilderx",
-  "name": "copilot-for-hbuilderx",
+  "id": "copilot-for-hbuilderx-plus",
+  "name": "copilot-for-hbuilderx-plus",
   "description": "Your AI pair programmer",
   "displayName": "GitHub Copilot",
   "version": "0.7.8",
-  "publisher": "zhetengbiji",
+  "publisher": "justmd5",
   "license": "GPL-3.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhetengbiji/copilot-for-hbuilderx.git"
+    "url": "git+https://github.com/justmd5/copilot-for-hbuilderx-plus.git"
   },
   "bugs": {
-    "url": "https://github.com/zhetengbiji/copilot-for-hbuilderx/issues"
+    "url": "https://github.com/justmd5/copilot-for-hbuilderx-plus/issues"
   },
-  "homepage": "https://github.com/zhetengbiji/copilot-for-hbuilderx#readme",
+  "homepage": "https://github.com/justmd5/copilot-for-hbuilderx-plus#readme",
   "engines": {
     "HBuilderX": "^3.8.5",
     "vscode": "^1.75.0",
@@ -90,7 +90,7 @@
     "configuration": {
       "title": "GitHub Copilot",
       "properties": {
-        "GithubCopilot.status.show": {
+        "GithubCopilotPlus.status.show": {
           "type": "string",
           "default": "auto",
           "description": "状态显示",
@@ -105,38 +105,38 @@
             "图标+文本"
           ]
         },
-        "GithubCopilot.editor.enableAutoCompletions": {
+        "GithubCopilotPlus.editor.enableAutoCompletions": {
           "type": "boolean",
           "default": true,
           "description": "自动显示行内补全"
         },
-        "GithubCopilot.enable": {
+        "GithubCopilotPlus.enable": {
           "type": "string",
           "default": "*=true,plaintext=false,markdown=false,scminput=false",
           "description": "启用或禁用指定语言的自动补全",
           "markdownDescription": "启用或禁用指定[语言](https://code.visualstudio.com/docs/languages/identifiers)的自动补全"
         },
-        "GithubCopilot.proxy.enable": {
+        "GithubCopilotPlus.proxy.enable": {
           "type": "boolean",
           "default": false,
           "description": "使用指定HTTP代理服务"
         },
-        "GithubCopilot.proxy.strictSSL": {
+        "GithubCopilotPlus.proxy.strictSSL": {
           "type": "boolean",
           "default": true,
           "description": "代理服务使用严格SSL"
         },
-        "GithubCopilot.proxy.host": {
+        "GithubCopilotPlus.proxy.host": {
           "type": "string",
           "default": "",
           "description": "HTTP代理地址（主机名:端口）"
         },
-        "GithubCopilot.proxy.user": {
+        "GithubCopilotPlus.proxy.user": {
           "type": "string",
           "default": "",
           "description": "HTTP代理用户（用户名:密码）"
         },
-        "GithubCopilot.chat.role": {
+        "GithubCopilotPlus.chat.role": {
           "type": "string",
           "default": "copilot",
           "description": "聊天角色限定",
@@ -148,6 +148,20 @@
             "编程助理",
             "无限制"
           ]
+        },
+        "GithubCopilotPlus.advanced.authProvider": {
+                    "type": "string",
+                    "default": "github",
+                    "description": "认证提供者配置",
+                    "enum": [
+                      "github",
+                      "github-enterprise"
+                    ]
+        },
+        "GithubCopilotPlus.github-enterprise.uri": {
+            "type": "string",
+            "default": "",
+            "description": "认证地址，如果不是配置企业认证，无需填写"
         }
       }
     },
@@ -175,6 +189,10 @@
       {
         "command": "copilot.chat.generateTests",
         "title": "生成测试"
+      },
+      {
+        "command": "copilot.updateAdvancedConfig",
+        "title": "Copilot: 更新高级设置"
       }
     ],
     "submenus": [

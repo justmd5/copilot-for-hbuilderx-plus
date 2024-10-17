@@ -230,7 +230,7 @@ export async function chat(input?: string) {
   outputChannel.append('')
   const messages: Chat[] = []
   const config = vscode.workspace.getConfiguration()
-  const role = config.get<string>('GithubCopilot.chat.role', 'copilot')
+  const role = config.get<string>('GithubCopilotPlus.chat.role', 'copilot')
   if (role === 'copilot') {
     messages.push({
       content: COPILOT_INSTRUCTIONS,
